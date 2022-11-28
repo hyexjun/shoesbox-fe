@@ -161,8 +161,8 @@ function Header() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <ModalLogin login={login} handleCloseLogin={handleCloseLogin} />
-      {/* <ModalLogin2 login={login} handleCloseLogin={handleCloseLogin} /> */}
+      {/* <ModalLogin login={login} handleCloseLogin={handleCloseLogin} /> */}
+      <ModalLogin2 login={login} handleCloseLogin={handleCloseLogin} />
       <ModalAlert
         show={show}
         onHide={handleClose}

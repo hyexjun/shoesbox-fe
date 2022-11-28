@@ -9,9 +9,7 @@ const AboutUsPage = () => {
           <img src="images/chanho.png" alt="프로필 사진" />
           <div>
             <div>찬호</div>
-            <a href="https://github.com/Elrendar">
-              https://github.com/Elrendar
-            </a>
+            <a href="https://github.com/mwma91">https://github.com/mwma91</a>
           </div>
         </div>
         <div className="personal-profile-box">
