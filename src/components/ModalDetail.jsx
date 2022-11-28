@@ -7,6 +7,7 @@ import {
   getDetailThunk,
   deleteDetailThunk,
   switchLoading,
+  switchLoadPost,
 } from '../features/detailSlice';
 import { getCookie } from '../shared/cookie';
 import CommentsList from './CommentsList';
@@ -25,7 +26,7 @@ const ModalDetail = ({ postId, ...props }) => {
   const content = post?.content;
   const writeMemberId = post?.memberId;
 
-  const editPost = () => {
+  const editPost = (post) => {
     navigate('/edit');
   };
 

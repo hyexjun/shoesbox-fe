@@ -23,16 +23,18 @@ const ModalAddFriend = (props) => {
   );
   const addFriendRef = useRef();
 
+  // console.log(requestFriendList);
+
   const validateEmail = (email) => {
     // 현재는 테스트로 조건 걸어 놓지 않음
-    // let emailReg = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
-    let emailReg = new RegExp();
+    // var emailReg = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+    var emailReg = new RegExp();
     return emailReg.test(email);
   };
-
   const onClickAddFriend = () => {
     if (addFriendRef.current.value.trim() !== '') {
       if (validateEmail(addFriendRef.current.value)) {
+        // console.log(addFriendRef.current.value);
         const email = addFriendRef.current.value;
         dispatch(addFriendThunk(email)).then((addFriendRef.current.value = ''));
       } else {
@@ -52,6 +54,7 @@ const ModalAddFriend = (props) => {
   };
 
   const onClickCancle = (toMemberId) => {
+    // console.log(toMemberId);
     dispatch(cancelFriendThunk(toMemberId));
   };
 
@@ -97,6 +100,8 @@ const ModalAddFriend = (props) => {
           requestFriendList?.map((member, idx) => (
             <div key={idx} className="addfriend-list">
               <div>
+                {/* <span>{member.memberNickname}</span>
+                님에게 친구 맺기를 요청하였습니다. */}
                 {member.memberNickname}
                 님에게 친구 맺기를 요청하였습니다.
               </div>
@@ -119,6 +124,7 @@ const ModalAddFriend = (props) => {
       dispatch(getRequestedFriendListThunk());
       dispatch(getRequestFriendListThunk());
     }
+    // console.log(requestFriendList);
   }, []);
 
   return (

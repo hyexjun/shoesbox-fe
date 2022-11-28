@@ -13,6 +13,8 @@ import {
 import ModalAddFriend from './ModalAddFriend';
 
 const ModalAlert = (props) => {
+  // const ModalAlert = ({alarmList,...props}) => {
+  //  const [alarmList, setAlarmList] = useState();
   const dispatch = useDispatch();
   const alarmList = useSelector((state) => state.login.alarmList);
   const loading = useSelector((state) => state.login.loading);
@@ -29,6 +31,7 @@ const ModalAlert = (props) => {
   const deleteOneAlarm = async (alarmId) => {
     try {
       const { data } = await apis.deleteAlarm(alarmId);
+      // console.log(data.data);
       if (data.data) {
         dispatch(deleteAlarm(alarmId));
       }
@@ -40,6 +43,7 @@ const ModalAlert = (props) => {
   const deleteAll = async () => {
     try {
       const { data } = await apis.deleteAlarmAll();
+      // console.log(data);
       if (data.data) {
         dispatch(deleteAllAlarms());
       }
@@ -49,6 +53,7 @@ const ModalAlert = (props) => {
   };
 
   useEffect(() => {
+    // console.log(alarmList);
     dispatch(switchLoadingAlarm(false));
   }, [alarmList]);
 

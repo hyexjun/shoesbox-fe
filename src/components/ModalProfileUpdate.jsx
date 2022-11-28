@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { apis } from '../api';
 
 const ModalProfileUpdate = (props) => {
+  // console.log(props);
 
   const [imgFile, setImgFile] = useState();
   const onFileChange = (e) => {
@@ -12,16 +13,20 @@ const ModalProfileUpdate = (props) => {
 
   // 회원정보 - 프사 수정 로직
   const handleUpdateProfile = () => {
+    // console.log('imgFile', imgFile);
+
     const formData = new FormData();
     formData.append('imageFile', imgFile);
 
     apis
       .updateUserData(props.memberId, formData)
       .then((res) => {
+        // console.log(res);
         props.setState({ ...props.state, profileImageUrl: imgFile });
         props.onHide();
       })
       .catch((err) => {
+        // console.log(err);
         alert(err.response.data.errorDetails.apierror.message);
       });
   };

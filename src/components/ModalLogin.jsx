@@ -20,6 +20,8 @@ const ModalLogin = ({ login, handleCloseLogin }) => {
   });
 
   const handleChangeState = (event) => {
+    // console.log(event.target.name);
+    // console.log(event.target.value);
     setState({
       ...state,
       [event.target.name]: event.target.value,
@@ -31,6 +33,8 @@ const ModalLogin = ({ login, handleCloseLogin }) => {
     apis
       .guestUser()
       .then((res) => {
+        // console.log('res', res);
+        // console.log('res.data', res.data);
         const token = res.data.data;
         setCookie(
           'accessToken',
@@ -49,7 +53,9 @@ const ModalLogin = ({ login, handleCloseLogin }) => {
         window.location.reload(true);
       })
       .catch((err) => {
+        // console.log(err);
         const errMessage = err.response?.data.errorDetails.apierror.message;
+        // console.log(errMessage);
         alert(errMessage);
       });
   };

@@ -1,5 +1,5 @@
-import React from 'react';
-import { useRef, useState, useEffect, memo } from 'react';
+import { useCallback } from 'react';
+import { useRef, useState, useEffect, memo, useMemo } from 'react';
 import { Button, Form, InputGroup, Spinner } from 'react-bootstrap';
 import {
   BsFillEraserFill,
@@ -11,7 +11,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   addCommentThunk,
   delCommentThunk,
+  delJsonCommentThunk,
   getCommentThunk,
+  getJsonCommentThunk,
+  patchJsonCommentThunk,
+  postJsonCommentThunk,
   putCommentThunk,
   switchLoading,
 } from '../features/detailSlice';
@@ -28,9 +32,13 @@ const CommentsList = ({ postId }) => {
   const [onEdit, setEdit] = useState(false);
   var tmp = '';
 
+  // console.log('로그인한 memberId',memberId);
+  // console.log('해당 post의 comments', comments);
+
   // 댓글 등록 버튼 눌렀을 때 실행되는 함수
   const onClickComment = () => {
     if (commentRef.current.value.trim() !== '') {
+      // console.log(commentRef.current.value);
       const content = commentRef.current?.value;
       // dispatch(postJsonCommentThunk({ postId, content }));
       dispatch(addCommentThunk({ postId, content }));
@@ -41,6 +49,7 @@ const CommentsList = ({ postId }) => {
 
   // 댓글 삭제 버튼 눌렀을 때
   const onClickDelBtn = (commentId) => {
+    // console.log(commentId);
     // dispatch(delJsonCommentThunk(commentId))
     dispatch(delCommentThunk(commentId));
   };
@@ -49,6 +58,7 @@ const CommentsList = ({ postId }) => {
   const onClickFixBtn = (commentId, content) => {
     setPick(commentId);
     setEdit(true);
+    // console.log(pick, commentId, content);
   };
 
   // 댓글 수정 모드 눌렀을 때의 버튼, 수정 입력 가능
@@ -133,7 +143,9 @@ const CommentsList = ({ postId }) => {
     if (postId !== (null || undefined)) {
       dispatch(getCommentThunk(postId));
     }
-  }, [comments.length, postId]);
+    // dispatch(getJsonCommentThunk(postId));
+    // console.log('comments', comments);
+  }, [comments.length]);
 
   return (
     <div className="detail-comments-wrap">

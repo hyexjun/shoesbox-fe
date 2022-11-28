@@ -1,10 +1,10 @@
 import './css/friendslist.css';
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Button } from 'react-bootstrap';
 import { BsPersonPlus } from 'react-icons/bs';
 import ModalAddFriend from './ModalAddFriend';
-import { getFriendListThunk } from '../features/friendSlice';
+import { getFriendListThunk, delFriendThunk } from '../features/friendSlice';
 
 const FriendsList = ({
   memberId,
@@ -14,6 +14,7 @@ const FriendsList = ({
   setCalMemberNickname,
 }) => {
   const dispatch = useDispatch();
+  // const friendList = useSelector((state) => state.friend.friendList);
 
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
