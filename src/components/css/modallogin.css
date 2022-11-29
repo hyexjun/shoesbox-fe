@@ -1,3 +1,6 @@
+/* 색상표 */
+/* #6B9080, #A4C3B2, #CCE3DE, #EAF4F4, #F6FFF8 */
+
 .login-logo {
   /* border: 1px solid red; */
   display: flex;
@@ -59,4 +62,13 @@
   margin-top: 5px;
   font-size: 14px;
   color: #6b9080;
+}
+
+#guest {
+  background-color: #f6fff8;
+  border: 2px dashed #cce3de;
+}
+#guest:hover {
+  background-color: #6b9080;
+  border: 2px dashed #A4C3B2;
 }

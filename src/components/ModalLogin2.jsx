@@ -229,17 +229,19 @@ const ModalLogin = ({ login, handleCloseLogin }) => {
               type="submit"
               variant="primary"
               onClick={handleSignup}
-//               onClick={() =>
-//                 alert(
-//                   `jwt 로그인/회원가입은 삭제 예정인 기능입니다.
-// 소셜 로그인을 이용해주세요.`
-//                 )
-//               }
+              //               onClick={() =>
+              //                 alert(
+              //                   `jwt 로그인/회원가입은 삭제 예정인 기능입니다.
+              // 소셜 로그인을 이용해주세요.`
+              //                 )
+              //               }
             >
               Sign Up
             </Button>
           )}
-          <Button onClick={() => handleGuest()}>Guest</Button>
+          <Button id="guest" onClick={() => handleGuest()}>
+            Guest🐱here
+          </Button>
         </Modal.Footer>
       </Modal>
     </>
